@@ -1,3 +1,27 @@
+# Dia de Feira
+
+<!-- ![preview](.github/print.png) -->
+
+> Dia de Feira
+
+Projeto construído durante o curso React: Gerenciamento de estados globais com ContextAPI, ministrado pela Alura.
+
+<!-- [Clique aqui para acessar](https://diadefeira.vercel.app/) -->
+
+## Tecnologias
+
+- JavaScript
+- ReactJS
+- React Router
+- Material UI
+- Styled Components
+
+## 💻 Projeto
+
+Dia de Feira é uma página de vendas para fazer a feira semanal sem que saia de casa. O projeto conta com as seguintes páginas, Login, Feira e Carrinho.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
