@@ -1,6 +1,6 @@
 # Dia de Feira
 
-<!-- ![preview](.github/print.png) -->
+![preview](.github/print.png)
 
 > Dia de Feira
 
