@@ -7,6 +7,8 @@ import { Login } from 'pages/Login';
 import { Feira } from 'pages/Feira';
 import { Carrinho } from 'pages/Carrinho';
 import { useState } from 'react';
+import { UserContext } from 'common/context/User';
+
 
 export function AppRouter() {
     const [ name, setName ] = useState('');
@@ -18,10 +20,9 @@ export function AppRouter() {
                 <Route
                     path="/" 
                     element={
-                        <Login
-                            name={name} setName={setName}
-                            balance={balance} setBalance={setBalance}
-                        />
+                        <UserContext.Provider value={{ name, setName, balance, setBalance }}>
+                            <Login />
+                        </UserContext.Provider>
                     }
                 />
                 <Route path="/feira" element={<Feira />} />
