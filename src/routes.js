@@ -6,13 +6,10 @@ import {
 import { Login } from 'pages/Login';
 import { Feira } from 'pages/Feira';
 import { Carrinho } from 'pages/Carrinho';
-import { useState } from 'react';
-import { UserContext } from 'common/context/User';
+import { UserProvider } from 'common/context/User';
 
 
 export function AppRouter() {
-    const [ name, setName ] = useState('');
-    const [ balance, setBalance ] = useState(0);
 
     return (
         <BrowserRouter>
@@ -20,9 +17,9 @@ export function AppRouter() {
                 <Route
                     path="/" 
                     element={
-                        <UserContext.Provider value={{ name, setName, balance, setBalance }}>
+                        <UserProvider>
                             <Login />
-                        </UserContext.Provider>
+                        </UserProvider>
                     }
                 />
                 <Route path="/feira" element={<Feira />} />
