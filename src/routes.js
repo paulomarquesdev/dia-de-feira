@@ -5,8 +5,9 @@ import {
 } from 'react-router-dom';
 import { Login } from 'pages/Login';
 import { Feira } from 'pages/Feira';
-import { Carrinho } from 'pages/Carrinho';
+import { Cart } from 'pages/Cart';
 import { UserProvider } from 'common/context/User';
+import { CartProvider } from 'common/context/CartContext';
 
 
 export function AppRouter() {
@@ -22,8 +23,24 @@ export function AppRouter() {
                         </UserProvider>
                     }
                 />
-                <Route path="/feira" element={<Feira />} />
-                <Route path="/carrinho" element={<Carrinho />} />
+                <Route
+                    path="/feira" 
+                    element={
+                        <UserProvider>
+                            <CartProvider>
+                                <Feira />
+                            </CartProvider>
+                        </UserProvider>
+                    }
+                />
+                <Route
+                    path="/Cart"
+                    element={
+                        <CartProvider>
+                            <Cart />
+                        </CartProvider>
+                    } 
+                />
             </Routes>
         </BrowserRouter>
     )

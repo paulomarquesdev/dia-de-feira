@@ -3,8 +3,9 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useState } from 'react';
 import { Container, Voltar, TotalContainer, PagamentoContainer} from './styles';
 
-export function Carrinho() {
+export function Cart() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  
   return (
     <Container>
       <Voltar />
