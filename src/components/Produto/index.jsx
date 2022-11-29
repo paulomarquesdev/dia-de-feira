@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-import { useCartContext } from 'common/context/CartContext';
+import { useCartContext } from 'common/context/Cart';
 
 
 function Produto({ name, photo, id, value }) {

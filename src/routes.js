@@ -7,7 +7,7 @@ import { Login } from 'pages/Login';
 import { Feira } from 'pages/Feira';
 import { Cart } from 'pages/Cart';
 import { UserProvider } from 'common/context/User';
-import { CartProvider } from 'common/context/CartContext';
+import { CartProvider } from 'common/context/Cart';
 
 
 export function AppRouter() {
