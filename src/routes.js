@@ -42,11 +42,13 @@ export function AppRouter() {
                     }
                 />
                 <Route
-                    path="/Cart"
+                    path="/cart"
                     element={
-                        <CartProvider>
-                            <Cart />
-                        </CartProvider>
+                        <UserProvider>
+                            <CartProvider>
+                                <Cart />
+                            </CartProvider>
+                        </UserProvider>
                     } 
                 />
             </Routes>
