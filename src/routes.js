@@ -24,6 +24,14 @@ export function AppRouter() {
                     }
                 />
                 <Route
+                    path="/login" 
+                    element={
+                        <UserProvider>
+                            <Login />
+                        </UserProvider>
+                    }
+                />
+                <Route
                     path="/feira" 
                     element={
                         <UserProvider>
