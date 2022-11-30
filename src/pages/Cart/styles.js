@@ -31,6 +31,7 @@ export const Voltar = styled(IconButton).attrs({
 
 export const TotalContainer = styled.section`
   margin-top: 20px;
+  width: 100%;
   > div {
     align-items: center;
     display: flex;
