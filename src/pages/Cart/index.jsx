@@ -3,15 +3,17 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useCartContext } from 'common/context/Cart';
 import Produto from 'components/Produto';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container, Voltar, TotalContainer, PagamentoContainer} from './styles';
 
 export function Cart() {
   const [ openSnackbar, setOpenSnackbar ] = useState(false);
   const { cart } = useCartContext();
+  const navigate = useNavigate();
 
   return (
     <Container>
-      <Voltar />
+      <Voltar onClick={() => navigate('/feira')} />
       <h2>
         Carrinho
       </h2>
