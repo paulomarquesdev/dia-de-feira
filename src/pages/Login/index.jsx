@@ -28,10 +28,10 @@ export function Login() {
         </InputLabel>
         <Input
           value={name}
+          type="text"
           onChange={(event) => {
             setName(event.target.value)
           }}
-          type="text"
         />
       </InputContainer>
       <InputContainer>
@@ -39,11 +39,9 @@ export function Login() {
           Saldo
         </InputLabel>
         <Input
-          type="number"
           value={balance}
-          onChange={(event) => {
-            setBalance(event.target.value)
-          }}
+          type="number"
+          onChange={(event) => setBalance(Number(event.target.value))}
           startAdornment={
             <InputAdornment position="start">
               R$
@@ -55,10 +53,7 @@ export function Login() {
         variant="contained"
         color="primary"
         disabled={name.length<3}
-        onClick={(event) => {
-          event.preventDefault();
-          navigate('/feira');
-        }}
+        onClick={() => navigate('/feira') }
       >
         Avançar
       </Button>
