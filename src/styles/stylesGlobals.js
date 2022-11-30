@@ -14,6 +14,13 @@ export const StylesGlobals = createGlobalStyle`
     padding: 0;
   }
 
+  html {
+    height: 100vh;
+    body {
+      height: 100%
+    }
+  }
+
   body::-webkit-scrollbar {
     width: 0.2rem;
   }

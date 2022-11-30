@@ -11,10 +11,6 @@ export const Container = styled.div`
     margin: 0 auto;
     width: 60%;
   }
-  
-  @media screen and (max-width: 768px) {
-    height: calc(var(--vh, 1vh) * 100);
-  }
 `;
 
 export const Titulo = styled.h2`
