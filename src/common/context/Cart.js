@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { PaymentContext } from "./Payment";
 
 export const CartContext = createContext();
 CartContext.displayName = "Cart";
@@ -6,6 +7,7 @@ CartContext.displayName = "Cart";
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [productAmount, setProductAmount] = useState(0);
+    const [totalValueCart, setTotalValueCart] = useState(0);
 
     return (
         <CartContext.Provider
@@ -13,7 +15,9 @@ export const CartProvider = ({ children }) => {
                 cart,
                 setCart,
                 productAmount,
-                setProductAmount
+                setProductAmount,
+                totalValueCart,
+                setTotalValueCart
             }}
         >
             {children}
@@ -26,8 +30,11 @@ export const useCartContext = () => {
         cart,
         setCart,
         productAmount,
-        setProductAmount
+        setProductAmount,
+        totalValueCart,
+        setTotalValueCart
     } = useContext(CartContext);
+    const { formOfPayment } = useContext(PaymentContext);
 
     function updateAmount(id, amount) {
         return cart.map(cartItem => {
@@ -64,11 +71,18 @@ export const useCartContext = () => {
     }
 
     useEffect(() => {
-        const newAmount = cart.reduce((counter, product) =>
-            counter + product.amount, 0
+        const { newAmount, newTotal } = cart.reduce(
+            (counter, product) => ({
+                newAmount: counter.newAmount + product.amount,
+                newTotal: counter.newTotal + (product.value * product.amount),
+            }), {
+                newAmount: 0,
+                newTotal: 0
+            }
         );
         setProductAmount(newAmount);
-    }, [cart, setProductAmount]);
+        setTotalValueCart(newTotal * formOfPayment.fees);
+    }, [cart, setProductAmount, setTotalValueCart, formOfPayment]);
 
     return {
         cart,
@@ -76,6 +90,7 @@ export const useCartContext = () => {
         addProduct,
         removeProduct,
         productAmount,
-        setProductAmount
+        setProductAmount,
+        totalValueCart
     };
 };

@@ -11,14 +11,15 @@ import { useContext } from 'react';
 
 
 export function Feira() {
-  const { name, balance } = useContext(UserContext)
+  const { name, balance = 0 } = useContext(UserContext);
+
   return (
     <Container>
       <NavBar />
       <Header>
         <div>
           <h2> Olá {name}!</h2>
-          <h3> Saldo: R$ {balance}</h3>
+          <h3> Saldo: R$ {balance.toFixed(0)}</h3>
         </div>
         <p>Encontre os melhores produtos orgânicos!</p>
       </Header>

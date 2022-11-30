@@ -8,6 +8,7 @@ import { Feira } from 'pages/Feira';
 import { Cart } from 'pages/Cart';
 import { UserProvider } from 'common/context/User';
 import { CartProvider } from 'common/context/Cart';
+import { PaymentProvider } from 'common/context/Payment';
 
 
 export function AppRouter() {
@@ -27,7 +28,10 @@ export function AppRouter() {
                     path="/login" 
                     element={
                         <UserProvider>
-                            <Login />
+                            <PaymentProvider>
+                                <Login />
+                            </PaymentProvider>
+                            
                         </UserProvider>
                     }
                 />
@@ -36,7 +40,9 @@ export function AppRouter() {
                     element={
                         <UserProvider>
                             <CartProvider>
-                                <Feira />
+                                <PaymentProvider>
+                                    <Feira />
+                                </PaymentProvider>
                             </CartProvider>
                         </UserProvider>
                     }
@@ -46,7 +52,9 @@ export function AppRouter() {
                     element={
                         <UserProvider>
                             <CartProvider>
-                                <Cart />
+                                <PaymentProvider>
+                                    <Cart />
+                                </PaymentProvider>
                             </CartProvider>
                         </UserProvider>
                     } 
