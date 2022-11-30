@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { PaymentContext } from "./Payment";
+import { usePaymentContext } from "./Payment";
+import { UserContext } from "./User";
 
 export const CartContext = createContext();
 CartContext.displayName = "Cart";
@@ -34,7 +35,8 @@ export const useCartContext = () => {
         totalValueCart,
         setTotalValueCart
     } = useContext(CartContext);
-    const { formOfPayment } = useContext(PaymentContext);
+    const { formOfPayment } = usePaymentContext();
+    const { setBalance } = useContext(UserContext);
 
     function updateAmount(id, amount) {
         return cart.map(cartItem => {
@@ -42,7 +44,7 @@ export const useCartContext = () => {
 
             return cartItem;
         })
-    }
+    };
 
     function addProduct(newProduct) {
         const productExist = cart.some((item) => item.id === newProduct.id);
@@ -54,7 +56,7 @@ export const useCartContext = () => {
         }
 
         setCart(updateAmount(newProduct.id, 1));
-    }
+    };
 
     function removeProduct(id) {
         const product = cart.find((cartItem) => cartItem.id === id);
@@ -68,7 +70,12 @@ export const useCartContext = () => {
         }
 
         setCart(updateAmount(id, -1));
-    }
+    };
+
+    function purchase () {
+        setCart([]);
+        setBalance(currentBalance => currentBalance - totalValueCart);
+    };
 
     useEffect(() => {
         const { newAmount, newTotal } = cart.reduce(
@@ -91,6 +98,7 @@ export const useCartContext = () => {
         removeProduct,
         productAmount,
         setProductAmount,
-        totalValueCart
+        totalValueCart,
+        purchase
     };
 };

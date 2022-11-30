@@ -11,7 +11,7 @@ import { Container, Voltar, TotalContainer, PagamentoContainer} from './styles';
 export function Cart() {
   const [ openSnackbar, setOpenSnackbar ] = useState(false);
   
-  const { cart, totalValueCart } = useCartContext();
+  const { cart, totalValueCart, purchase } = useCartContext();
   const { paymentType, formOfPayment, updatePaymentForm } = usePaymentContext();
   const { balance = 0 } = useContext(UserContext);
   const navigate = useNavigate();
@@ -37,10 +37,7 @@ export function Cart() {
           onChange={(event) => updatePaymentForm(event.target.value)}
         >
           {paymentType.map(payment => (
-            <MenuItem
-              key={payment.id}
-              value={payment.id}
-            >
+            <MenuItem key={payment.id} value={payment.id} >
               {payment.name}
             </MenuItem>
           ))}
@@ -63,6 +60,7 @@ export function Cart() {
       <Button
         disabled={total<0 || cart.length === 0}
         onClick={() => {
+          purchase();
           setOpenSnackbar(true);
         }}
         color="primary"
