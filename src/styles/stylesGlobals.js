@@ -13,5 +13,18 @@ export const StylesGlobals = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  body::-webkit-scrollbar {
+    width: 0.2rem;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--textColorPost);
+    border-radius: 1.3rem;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.3);
+  }
 `;
 

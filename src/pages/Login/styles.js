@@ -8,6 +8,7 @@ export const Container = styled.div`
   padding: 0 20px;
   height: 100vh;
   @media(min-width: 768px) {
+    height: calc(var(--vh, 1vh) * 100);
     margin: 0 auto;
     width: 60%;
   }
